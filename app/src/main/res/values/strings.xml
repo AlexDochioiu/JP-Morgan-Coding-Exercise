@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JP Morgan Coding Exercise</string>
+
+    <string name="album_title_label">Album Title</string>
+    <string name="album_userid_label">User Id</string>
+    <string name="album_albumid_label">Album Id</string>
+</resources>
