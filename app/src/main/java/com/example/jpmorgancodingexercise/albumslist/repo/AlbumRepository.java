@@ -1,15 +1,15 @@
-package com.example.jpmorgancodingexercise;
+package com.example.jpmorgancodingexercise.albumslist;
 
 import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
 
-import java.net.NetworkInterface;
+import com.example.jpmorgancodingexercise.albumslist.model.Album;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
