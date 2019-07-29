@@ -1,4 +1,4 @@
-package com.example.jpmorgancodingexercise;
+package com.example.jpmorgancodingexercise.albumslist.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.jpmorgancodingexercise.R;
+import com.example.jpmorgancodingexercise.albumslist.repo.model.Album;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +27,9 @@ public class AlbumAdapter  extends RecyclerView.Adapter<AlbumAdapter.AlbumHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AlbumHolder holder, int position) {
-        Album currentAlbum = albums.get(position);
-        holder.textViewTitle.setText(currentAlbum.getTitle());
-        holder.textViewAlbumId.setText(String.valueOf(currentAlbum.getId()));
-        holder.textViewUserId.setText(String.valueOf(currentAlbum.getUserId()));
+    public void onBindViewHolder(@NonNull AlbumHolder holder, final int position) {
+        final Album currentAlbum = albums.get(position);
+        holder.bind(currentAlbum);
     }
 
     @Override
@@ -52,6 +53,12 @@ public class AlbumAdapter  extends RecyclerView.Adapter<AlbumAdapter.AlbumHolder
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewUserId = itemView.findViewById(R.id.text_view_userid);
             textViewAlbumId = itemView.findViewById(R.id.text_view_albumid);
+        }
+
+        void bind(@NonNull final Album album) {
+            textViewTitle.setText(album.getTitle());
+            textViewAlbumId.setText(String.valueOf(album.getId()));
+            textViewUserId.setText(String.valueOf(album.getUserId()));
         }
     }
 }

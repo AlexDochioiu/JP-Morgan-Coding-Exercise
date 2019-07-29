@@ -1,4 +1,4 @@
-package com.example.jpmorgancodingexercise;
+package com.example.jpmorgancodingexercise.albumslist.repo.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
 public class Album {
 
     @PrimaryKey(autoGenerate = false)
-    private int id;
-    private int userId;
-    private String title;
+    private final int id;
+    private final int userId;
+    private final String title;
 
     public Album(int id, int userId, String title) {
         this.id = id;

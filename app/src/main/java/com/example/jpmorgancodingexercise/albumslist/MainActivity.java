@@ -1,23 +1,22 @@
-package com.example.jpmorgancodingexercise;
+package com.example.jpmorgancodingexercise.albumslist;
+
+import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
-import java.util.List;
+import com.example.jpmorgancodingexercise.JpApplication;
+import com.example.jpmorgancodingexercise.R;
+import com.example.jpmorgancodingexercise.albumslist.adapters.AlbumAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "ALBUM";
+    private static final String TAG = "MainActivity";
+    private MainViewModel mainViewModel;
 
-
-    private AlbumViewModel albumViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +29,12 @@ public class MainActivity extends AppCompatActivity {
         final AlbumAdapter albumAdapter = new AlbumAdapter();
         albumRecyclerView.setAdapter(albumAdapter);
 
+        final JpApplication application = (JpApplication) getApplication();
 
-        albumViewModel = ViewModelProviders.of(this).get(AlbumViewModel.class);
-        albumViewModel.getAllAlbums().observe(this, new Observer<List<Album>>() {
-            @Override
-            public void onChanged(List<Album> albums) {
-                albumAdapter.setAlbums(albums);
-                for(Album album : albums) {
-                    Log.d(TAG, album.getTitle());
-                }
-            }
+        mainViewModel = ViewModelProviders.of(this, application.getMainViewModelFactory()).get(MainViewModel.class);
+        mainViewModel.getAllAlbums().observe(this, albums -> {
+            Log.d(TAG, "Albums list observed");
+            albumAdapter.setAlbums(albums);
         });
     }
 }

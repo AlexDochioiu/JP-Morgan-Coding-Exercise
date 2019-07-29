@@ -1,4 +1,6 @@
-package com.example.jpmorgancodingexercise;
+package com.example.jpmorgancodingexercise.albumslist.repo.networking;
+
+import com.example.jpmorgancodingexercise.albumslist.repo.model.Album;
 
 import java.util.List;
 
